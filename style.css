@@ -256,9 +256,15 @@ a:hover span {
 .tab-content-container {
     max-width: 1200px;
     margin: 0 auto;
-    min-height: 200px; 
+    min-height: 450px; 
     position: relative; 
     padding-top: 20px;
+}
+
+@media (min-width: 768px) {
+    .tab-content-container {
+        min-height: 200px; /* Applied only on screens 768px and wider */
+    }
 }
 
 /* === Skills Grid and Cards (Animation Core) === */
@@ -353,7 +359,7 @@ a:hover span {
 
 /* === Responsive === */
 @media (max-width: 768px) {
-    .skills-container {
+    .skills-container,#projects {
         padding: 60px 5%;
     }
     .section-title {
@@ -363,9 +369,16 @@ a:hover span {
         font-size: 14px;
     }
     .skills-grid {
+        display: grid;
         grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
         gap: 20px;
     }
+    @media (max-width: 768px) {
+    .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+    }
+  }
 }
 
 /* --- Project Section Base --- */
