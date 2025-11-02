@@ -7,6 +7,7 @@
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="script.js"></script>
 
   <!-- Custom Styles -->
   <link rel="stylesheet" href="style.css">
@@ -85,38 +86,201 @@
   </section>
 
   <!-- Skills Section -->
-    <section class="skills-container" id="skills">
-  <h2 class="section-title">My Skills</h2>
-  <p class="section-subtitle">
-    Technologies and tools I work with
-  </p>
+  <section class="skills-container" id="skills">
+    <h2 class="section-title">My Technical Toolkit</h2>
+    <p class="section-subtitle">
+        Technologies, frameworks, and architecture I leverage
+    </p>
 
-  <div class="skills-grid">
-    <div class="skill-card">HTML</div>
-    <div class="skill-card">CSS</div>
-    <div class="skill-card">JavaScript</div>
-    <div class="skill-card">TypeScript</div>
-    <div class="skill-card">Angular</div>
-    <div class="skill-card">Node.js</div>
-    <div class="skill-card">C#</div>
-    <div class="skill-card">SQL Server</div>
-    <div class="skill-card">MongoDB</div>
-    <div class="skill-card">Git & GitHub</div>
-    <div class="skill-card">Docker</div>
-    <div class="skill-card">Azure</div>
-  </div>
+    <div class="skills-tabs">
+        <button class="tab-button active" data-tab="backend">Backend & Core</button>
+        <button class="tab-button" data-tab="frontend">Frontend</button>
+        <button class="tab-button" data-tab="devops">DevOps & Cloud</button>
+        <button class="tab-button" data-tab="data-analytics">Data & Reporting</button>
+    </div>
+
+    <div class="tab-content-container">
+
+        <div id="backend" class="skills-grid tab-pane active">
+            <div class="skill-card">C#</div>
+            <div class="skill-card">.NET Core</div>
+            <div class="skill-card">ASP.NET MVC</div>
+            <div class="skill-card">Entity Framework Core</div>
+            <div class="skill-card">LINQ</div>
+            <div class="skill-card">Microservices</div>
+            <div class="skill-card">RESTful APIs</div>
+            <div class="skill-card">SQL Server</div>
+            <div class="skill-card">PostgreSQL</div>
+            <div class="skill-card">Snowflake</div>
+        </div>
+
+        <div id="frontend" class="skills-grid tab-pane">
+            <div class="skill-card">Angular</div>
+            <div class="skill-card">TypeScript</div>
+            <div class="skill-card">JavaScript / HTML5 / CSS</div>
+            <div class="skill-card">Responsive Design</div>
+            <div class="skill-card">Blazor</div>
+            <div class="skill-card">React</div>
+        </div>
+
+        <div id="devops" class="skills-grid tab-pane">
+            <div class="skill-card">Azure</div>
+            <div class="skill-card">Azure DevOps</div>
+            <div class="skill-card">CI/CD (GitHub Actions)</div>
+            <div class="skill-card">Docker</div>
+            <div class="skill-card">Kubernetes</div>
+            <div class="skill-card">Git</div>
+        </div>
+
+        <div id="data-analytics" class="skills-grid tab-pane">
+            <div class="skill-card">Power BI</div>
+            <div class="skill-card">Chart.js</div>
+            <div class="skill-card">Data Analysis / Processing</div>
+            <div class="skill-card">T-SQL</div>
+            <div class="skill-card">Microsoft Visio</div>
+        </div>
+
+    </div>
 </section>
 
   <!-- Projects Section -->
   <section id="projects" class="max-w-7xl mx-auto p-10">
-    <h2 class="text-3xl font-bold text-gray-800 mb-6">Projects</h2>
-    <p class="text-gray-600">Your projects will appear here.</p>
+    <h2 class="section-title">Featured Projects</h2>
+    <p class="section-subtitle">
+        Solutions built with .NET Core, Angular, and Azure principles
+    </p>
+
+    <div class="projects-grid">
+
+        <div class="project-card">
+            <h3>Transportation Management App</h3>
+            <div class="tech-stack">
+                <span class="tech-tag">.NET Core</span>
+                <span class="tech-tag">Angular</span>
+                <span class="tech-tag">SQL Server</span>
+            </div>
+            <p>
+                Internal web-based system for optimizing employee transport schedules, demonstrating robust full-stack development and real-time resource visibility.
+            </p>
+            <div class="project-links">
+                <a href="[GitHub Link 1]" target="_blank" class="code-button">View Code 💻</a>
+                <a href="#" target="_blank" class="demo-button" aria-disabled="true">Demo N/A</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>Real Estate Listing Platform</h3>
+            <div class="tech-stack">
+                <span class="tech-tag">ASP.NET Core</span>
+                <span class="tech-tag">JWT Auth</span>
+                <span class="tech-tag">React</span>
+            </div>
+            <p>
+                Full-stack platform with secure RESTful APIs, enabling property browsing and user management, highlighting secure authentication and front-end proficiency.
+            </p>
+            <div class="project-links">
+                <a href="[GitHub Link 2]" target="_blank" class="code-button">View Code 💻</a>
+                <a href="#" target="_blank" class="demo-button">View Demo 🚀</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>eCommerce Users Microservice</h3>
+            <div class="tech-stack">
+                <span class="tech-tag">Microservices</span>
+                <span class="tech-tag">C#</span>
+                <span class="tech-tag">PostgreSQL</span>
+            </div>
+            <p>
+                Developed the dedicated user management layer for a larger e-commerce platform, showcasing expertise in distributed systems and scalable API design.
+            </p>
+            <div class="project-links">
+                <a href="[GitHub Link 3]" target="_blank" class="code-button">View Code 💻</a>
+                <a href="#" target="_blank" class="demo-button" aria-disabled="true">Demo N/A</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>API Performance Optimization</h3>
+            <div class="tech-stack">
+                <span class="tech-tag">Caching</span>
+                <span class="tech-tag">Async</span>
+                <span class="tech-tag">Blazor</span>
+            </div>
+            <p>
+                Focused on dramatic performance improvement using asynchronous processing and in-memory caching, with an interactive Blazor frontend for testing and metrics.
+            </p>
+            <div class="project-links">
+                <a href="[GitHub Link 4]" target="_blank" class="code-button">View Code 💻</a>
+                <a href="#" target="_blank" class="demo-button">View Demo 🚀</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>Data Analytics Dashboard</h3>
+            <div class="tech-stack">
+                <span class="tech-tag">Power BI</span>
+                <span class="tech-tag">DAX</span>
+                <span class="tech-tag">Data Analysis</span>
+            </div>
+            <p>
+                Created a sophisticated Power BI dashboard using airline data, implementing advanced analytics with DAX for interactive, data-driven executive reporting.
+            </p>
+            <div class="project-links">
+                <a href="[GitHub Link 5]" target="_blank" class="code-button">View Code 💻</a>
+                <a href="#" target="_blank" class="demo-button" aria-disabled="true">Report Link</a>
+            </div>
+        </div>
+        
+    </div>
   </section>
 
   <!-- Education Section -->
   <section id="education" class="max-w-7xl mx-auto p-10">
-    <h2 class="text-3xl font-bold text-gray-800 mb-6">Education</h2>
-    <p class="text-gray-600">Your education details go here.</p>
+    <h2 class="section-title">My Growth Path</h2>
+    <p class="section-subtitle">
+        A journey through education and professional experience
+    </p>
+
+    <div class="timeline-road">
+
+        <div class="timeline-item left-item">
+            <div class="timeline-content">
+                <h3>BCA - Bachelor of Computer Applications</h3>
+                <p class="institution">APJ Abdul Kalam Technological University</p>
+                <p class="year">2016 - 2019</p>
+                <p class="details">Built foundational knowledge in computer science, programming, and mathematics.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item right-item">
+            <div class="timeline-content">
+                <h3>MCA - Master of Computer Applications</h3>
+                <p class="institution">APJ Abdul Kalam Technological University</p>
+                <p class="year">2019 - 2022</p>
+                <p class="details">Specialized in advanced software engineering, data structures, and system design.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item left-item">
+            <div class="timeline-content">
+                <h3>Full Stack .NET Developer</h3>
+                <p class="institution">Guidehouse India Pvt. Ltd.</p>
+                <p class="year">Aug 2022 - Sep 2024</p>
+                <p class="details">Modernized core systems and implemented scalable, high-performance services using **.NET Core** and **Angular**.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item right-item">
+            <div class="timeline-content">
+                <h3>Latest Master's Degree (Placeholder)</h3>
+                <p class="institution">Future University/Specialization</p>
+                <p class="year">Start Year - End Year</p>
+                <p class="details">Focusing on **Microservices Architecture** and **Cloud Engineering (Azure)** to advance expertise.</p>
+            </div>
+        </div>
+        
+    </div>
   </section>
 
   <!-- Script for Mobile Menu Toggle -->

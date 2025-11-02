@@ -171,60 +171,471 @@ a:hover span {
 }
 
 /* === Skills Section === */
+/* --- VARIABLES --- */
+:root {
+    --primary-accent: #3b82f6; 
+    --secondary-accent: #8b5cf6;
+    --light-bg: #f9fafb;
+    --text-dark: #1f2937;
+    --text-light: #6b7280;
+    --animation-duration: 0.4s;
+    --stagger-delay: 50ms; /* Delay between each card for wave effect */
+}
+
+/* === Skills Section Base === */
 .skills-container {
-  padding: 100px 10%;
-  background: linear-gradient(135deg, #eef2ff, #f8faff);
-  text-align: center;
+    padding: 100px 10%;
+    background: var(--light-bg); 
+    text-align: center;
+    overflow: hidden; 
 }
 
 .section-title {
-  font-size: 42px;
-  font-weight: 700;
-  color: #4f46e5;
-  margin-bottom: 10px;
+    font-size: 52px; 
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 5px;
 }
 
 .section-subtitle {
-  font-size: 18px;
-  color: #444;
-  margin-bottom: 40px;
+    font-size: 20px;
+    color: var(--text-light);
+    margin-bottom: 50px; 
 }
 
+/* === Tab Buttons Styling (Animated Underline) === */
+.skills-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 30px; 
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.tab-button {
+    padding: 10px 0; 
+    background: none;
+    color: var(--text-light);
+    font-weight: 600;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    position: relative; /* For the animated line */
+}
+
+.tab-button:hover:not(.active) {
+    color: var(--primary-accent);
+}
+
+.tab-button.active {
+    color: var(--text-dark); 
+    font-weight: 700;
+}
+
+/* --- Animated Underline Effect --- */
+.tab-button::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%; /* Start in the middle */
+    width: 0;
+    height: 3px;
+    background-color: var(--primary-accent);
+    transform: translateX(-50%);
+    transition: width 0.3s ease-in-out;
+}
+
+.tab-button.active::after {
+    width: 100%; /* Expands to full width when active */
+}
+
+
+/* === Tab Content Container (Stability Fix & Animation Setup) === */
+.tab-content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 200px; 
+    position: relative; 
+    padding-top: 20px;
+}
+
+/* === Skills Grid and Cards (Animation Core) === */
 .skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+    
+    /* Stability & Base State for Transition */
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 0;
+    opacity: 0;
+    pointer-events: none;
+    /* Slide-out/Slide-in preparation */
+    transform: translateX(10px) translateY(0); 
+    transition: opacity var(--animation-duration) ease-out, 
+                transform var(--animation-duration) ease-out;
 }
 
+/* --- Active Tab Slide-In Animation --- */
+.tab-pane.active {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+    pointer-events: auto;
+}
+
+/* --- Skill Card Base & Hover (Gradient Focus) --- */
+/* --- Skill Card Base (Enabling 3D) --- */
 .skill-card {
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  font-weight: 600;
-  color: #4f46e5;
-  transition: all 0.3s ease;
-  cursor: default;
+    background: white;
+    padding: 25px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    color: var(--text-dark); 
+    cursor: default;
+    
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05); 
+    border: 1px solid #e5e7eb; 
+    
+    /* Enable 3D transform on the card */
+    transform-style: preserve-3d;
+    
+    /* Smoother transition for 3D */
+    transition: transform 0.4s ease-out, box-shadow 0.4s ease-out, color 0.4s ease-out;
+    
+    /* Base state for Staggered Entrance (keep this for animation) */
+    opacity: 0;
+    transform: translateY(15px);
+    position: relative; 
+    z-index: 1;
 }
 
+/* --- Cool Hover Effect: 3D Tilt and Dynamic Shadow --- */
 .skill-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    /* Apply a slight tilt (3D effect) and a small lift */
+    transform: 
+        translateZ(20px) /* Pulls the card slightly forward in 3D space */
+        translateY(-5px) 
+        rotateX(2deg) /* Gentle tilt on the X-axis */
+        rotateY(-2deg); /* Gentle tilt on the Y-axis */
+        
+    /* Dynamic, strong shadow that enhances the 3D look */
+    box-shadow: 
+        -10px 10px 25px rgba(0, 0, 0, 0.25), /* Creates a strong shadow based on the tilt */
+        0 0 5px rgba(59, 130, 246, 0.5); /* Subtle blue outer glow */
+        
+    color: var(--primary-accent); 
+    z-index: 2;
+    border-color: #f1f5f9; 
+}
+
+/* --- Staggered Entrance Animation (Keyframes) --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* The magic happens in JavaScript for the timing/delay */
+.skill-card.animate {
+    animation: fadeInUp 0.5s ease-out forwards;
 }
 
 /* === Responsive === */
 @media (max-width: 768px) {
-  .skills-container {
-    padding: 60px 5%;
-  }
-
-  .section-title {
-    font-size: 32px;
-  }
-
-  .skills-grid {
-    gap: 15px;
-  }
+    .skills-container {
+        padding: 60px 5%;
+    }
+    .section-title {
+        font-size: 38px;
+    }
+    .tab-button {
+        font-size: 14px;
+    }
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: 20px;
+    }
 }
 
+/* --- Project Section Base --- */
+.projects-container {
+    padding: 100px 10%;
+    background: white; /* Use a clean white background for contrast */
+    text-align: center;
+}
 
+/* Re-use Title/Subtitle styles from the Skills section */
+.projects-container .section-title {
+    color: var(--text-dark);
+}
+
+.projects-container .section-subtitle {
+    margin-bottom: 60px;
+}
+
+.projects-grid {
+    display: grid;
+    /* Use a responsive grid: 3 columns on large screens, 2 on medium */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* === Project Card Styling === */
+.project-card {
+    background: var(--light-bg); /* Use the off-white background */
+    padding: 30px;
+    border-radius: 12px;
+    text-align: left;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: all 0.4s ease-out;
+    display: flex; /* Helps stack content cleanly */
+    flex-direction: column;
+}
+
+/* Card Hover Effect: Simple lift and accent border/shadow */
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    border-color: var(--primary-accent);
+}
+
+.project-card h3 {
+    font-size: 24px;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+}
+
+.project-card p {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 25px;
+    flex-grow: 1; /* Pushes the links to the bottom */
+}
+
+/* --- Tech Tags (Pills) --- */
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.tech-tag {
+    background-color: #e0e7ff; /* Very light blue */
+    color: var(--primary-accent);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+
+/* --- Links and Buttons --- */
+.project-links {
+    display: flex;
+    gap: 15px;
+    margin-top: auto; /* Ensures links are always at the bottom */
+}
+
+.project-links a {
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    flex: 1;
+}
+
+.code-button {
+    background-color: var(--primary-accent);
+    color: white;
+}
+
+.code-button:hover {
+    background-color: #316cb8; /* Slightly darker blue */
+    transform: translateY(-2px);
+}
+
+.demo-button {
+    background-color: #f1f5f9;
+    color: var(--text-dark);
+    border: 1px solid #e5e7eb;
+}
+
+.demo-button:hover {
+    background-color: #e2e8f0;
+    transform: translateY(-2px);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .projects-container {
+        padding: 60px 5%;
+    }
+    .projects-grid {
+        /* Switch to a 1-column layout on small screens */
+        grid-template-columns: 1fr;
+    }
+    .project-card h3 {
+        font-size: 20px;
+    }
+}
+
+/* --- Reusing Global Styles --- */
+.career-timeline-container {
+    padding: 100px 10%;
+    background: var(--light-bg); /* Use the soft background from the skills section */
+    text-align: center;
+}
+
+/* === The Main Road (Timeline Line) === */
+.timeline-road {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+/* The vertical "Road" line */
+.timeline-road::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: var(--primary-accent); /* Blue accent line */
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+    /* Subtle background animation for the line (optional, but cool) */
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5); 
+}
+
+/* === Individual Timeline Items === */
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+    opacity: 0; /* Base state for animation */
+    transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Markers (The "dot" on the road) */
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: -10px;
+    background-color: white;
+    border: 4px solid var(--secondary-accent); /* Vibrant border for pop */
+    top: 15px;
+    border-radius: 50%;
+    z-index: 10;
+    /* Animation base: scale down */
+    transform: scale(0.5); 
+    transition: transform 0.4s ease-out;
+}
+
+.timeline-item.in-view {
+    opacity: 1;
+    transform: translateY(0) !important;
+}
+
+/* Animation on View: Marker scales up */
+.timeline-item.in-view::after {
+    transform: scale(1);
+}
+
+/* --- Left Side Items (Work Experience, etc.) --- */
+.left-item {
+    left: 0;
+    padding-right: 50px;
+    transform: translateX(-50px); /* Slide in from left */
+}
+.left-item::after {
+    left: auto;
+    right: -10px;
+}
+
+/* --- Right Side Items (Education, etc.) --- */
+.right-item {
+    left: 50%;
+    padding-left: 50px;
+    transform: translateX(50px); /* Slide in from right */
+}
+.right-item::after {
+    left: -10px;
+    right: auto;
+}
+
+/* --- Content Styling --- */
+.timeline-content {
+    padding: 20px 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: left;
+}
+.timeline-content h3 {
+    color: var(--primary-accent);
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+.timeline-content .institution {
+    font-style: italic;
+    color: var(--text-light);
+}
+.timeline-content .year {
+    font-weight: 700;
+    margin-bottom: 10px;
+    border-bottom: 1px dashed #e5e7eb;
+    padding-bottom: 5px;
+}
+.timeline-content .details {
+    color: var(--text-dark);
+}
+
+/* === Responsive (Single Column on Mobile) === */
+@media screen and (max-width: 768px) {
+    .timeline-road::after {
+        left: 25px; /* Move the road line to the left */
+    }
+    .timeline-item {
+        width: 100%;
+        padding-left: 60px; /* Give space for the line */
+        padding-right: 10px;
+        opacity: 0;
+        left: 0 !important; /* Force all items to the left */
+        transform: translateX(0) !important;
+        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); /* Reset initial transform */
+    }
+    /* Move all markers to the left line */
+    .timeline-item::after {
+        left: 22px !important;
+        right: auto !important;
+    }
+    /* Adjust initial slide for mobile animation */
+    .timeline-item {
+        transform: translateX(-30px);
+    }
+    /* Apply mobile slide-in animation */
+    .timeline-item.in-view {
+        opacity: 1;
+        transform: translateX(0) !important;
+    }
+}
