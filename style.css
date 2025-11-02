@@ -247,6 +247,14 @@ a:hover span {
     transition: width 0.3s ease-in-out;
 }
 
+.logo {
+  width: 190px;       /* adjust size */
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: 20px;
+  animation: logoPulse 2.5s ease-in-out infinite alternate;
+}
+
 .tab-button.active::after {
     width: 100%; /* Expands to full width when active */
 }
@@ -297,6 +305,26 @@ a:hover span {
 
 /* --- Skill Card Base & Hover (Gradient Focus) --- */
 /* --- Skill Card Base (Enabling 3D) --- */
+
+@keyframes continuousWave {
+  0% {
+    transform: translateY(0) rotateZ(0deg);
+  }
+  25% {
+    transform: translateY(-6px) rotateZ(2deg);
+  }
+  50% {
+    transform: translateY(6px) rotateZ(-2deg);
+  }
+  75% {
+    transform: translateY(-4px) rotateZ(1deg);
+  }
+  100% {
+    transform: translateY(0) rotateZ(0deg);
+  }
+}
+
+
 .skill-card {
     background: white;
     padding: 25px 20px;
@@ -321,19 +349,45 @@ a:hover span {
     z-index: 1;
 }
 
-/* --- Cool Hover Effect: 3D Tilt and Dynamic Shadow --- */
+.skills-grid.tab-pane.active .skill-card {
+  animation: continuousWave 2.5s ease-in-out infinite;
+  animation-fill-mode: both;
+  transform-origin: center;
+  opacity: 1;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, color 0.35s ease;
+}
+
+.skills-grid.tab-pane.active .skill-card:nth-child(1) { animation-delay: 0s; }
+.skills-grid.tab-pane.active .skill-card:nth-child(2) { animation-delay: 0.2s; }
+.skills-grid.tab-pane.active .skill-card:nth-child(3) { animation-delay: 0.4s; }
+.skills-grid.tab-pane.active .skill-card:nth-child(4) { animation-delay: 0.6s; }
+.skills-grid.tab-pane.active .skill-card:nth-child(5) { animation-delay: 0.8s; }
+.skills-grid.tab-pane.active .skill-card:nth-child(6) { animation-delay: 1s; }
+.skills-grid.tab-pane.active .skill-card:nth-child(7) { animation-delay: 1.2s; }
+.skills-grid.tab-pane.active .skill-card:nth-child(8) { animation-delay: 1.4s; }
+.skills-grid.tab-pane.active .skill-card:nth-child(9) { animation-delay: 1.6s; }
+.skills-grid.tab-pane.active .skill-card:nth-child(10) { animation-delay: 1.8s; }
+
+.skills-grid.tab-pane.active:hover .skill-card {
+  animation-play-state: paused !important;
+  transform: translateY(0) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+
+}
+.skills-grid.tab-pane.active .skill-card:hover {
+  transform: translateY(0) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1.05);
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.25),
+    0 0 6px rgba(59, 130, 246, 0.6);
+  color: var(--primary-accent);
+  z-index: 2;
+  border-color: #f1f5f9;
+}
 .skill-card:hover {
-    /* Apply a slight tilt (3D effect) and a small lift */
-    transform: 
-        translateZ(20px) /* Pulls the card slightly forward in 3D space */
-        translateY(-5px) 
-        rotateX(2deg) /* Gentle tilt on the X-axis */
-        rotateY(-2deg); /* Gentle tilt on the Y-axis */
-        
-    /* Dynamic, strong shadow that enhances the 3D look */
+    animation-play-state: paused !important; 
+    transform: translateY(0) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1.05);
     box-shadow: 
-        -10px 10px 25px rgba(0, 0, 0, 0.25), /* Creates a strong shadow based on the tilt */
-        0 0 5px rgba(59, 130, 246, 0.5); /* Subtle blue outer glow */
+        -10px 10px 25px rgba(0, 0, 0, 0.25), 
+        0 0 5px rgba(59, 130, 246, 0.5); 
         
     color: var(--primary-accent); 
     z-index: 2;
@@ -407,36 +461,92 @@ a:hover span {
 }
 
 /* === Project Card Styling === */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Flip Card Container */
 .project-card {
-    background: var(--light-bg); /* Use the off-white background */
-    padding: 30px;
-    border-radius: 12px;
-    text-align: left;
-    border: 1px solid #e5e7eb;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    transition: all 0.4s ease-out;
-    display: flex; /* Helps stack content cleanly */
+    perspective: 1000px; /* 3D effect */
+}
+
+/* Inner Card */
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 400px; /* Adjust as needed */
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    border-radius: 20px; /* Rounded corners */
+}
+
+/* Flip on Hover */
+.project-card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Front & Back Sides */
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px; /* Rounded corners */
+    backface-visibility: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1); /* Shadow */
+    display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    transition: all 0.4s ease;
+    background: var(--light-bg);
 }
 
-/* Card Hover Effect: Simple lift and accent border/shadow */
-.project-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-    border-color: var(--primary-accent);
-}
-
-.project-card h3 {
-    font-size: 24px;
-    color: var(--text-dark);
+/* Front Side */
+.card-front img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 20px; /* Rounded image corners */
     margin-bottom: 15px;
 }
 
-.project-card p {
-    color: var(--text-light);
-    line-height: 1.6;
-    margin-bottom: 25px;
-    flex-grow: 1; /* Pushes the links to the bottom */
+.card-front h3 {
+    font-size: 22px;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+}
+
+/* Back Side */
+.card-back {
+    transform: rotateY(180deg);
+    background: #fdfcfc; /* Distinct background */
+    color: #0c0c0c;
+    text-align: center;
+}
+
+.card-back p {
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+.project-links a {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 15px;
+    border-radius: 12px; /* Rounded button */
+    text-decoration: none;
+    color: #fff;
+    background: #007BFF; /* Button color */
+    transition: background 0.3s;
+}
+
+.project-links a:hover {
+    background: #0056b3;
 }
 
 /* --- Tech Tags (Pills) --- */

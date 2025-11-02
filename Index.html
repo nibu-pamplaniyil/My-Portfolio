@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <title>Nibu George | Fullstack Developer</title>
+  
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -13,6 +15,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-gray-50">
+  
 
   <!-- Navbar -->
   <nav class="fixed top-0 left-0 w-full z-50 bg-white shadow-md backdrop-blur-md bg-opacity-95">
@@ -145,100 +148,133 @@
 
   <!-- Projects Section -->
   <section id="projects" class="max-w-7xl mx-auto p-10">
-    <h2 class="section-title">Featured Projects</h2>
-    <p class="section-subtitle">
+    <h2 class="section-title" style="text-align: center;">Featured Projects</h2>
+    <p class="section-subtitle" style="text-align: center;">
         Solutions built with .NET Core, Angular, and Azure principles
     </p>
 
     <div class="projects-grid">
 
-        <div class="project-card">
-            <h3>Transportation Management App</h3>
-            <div class="tech-stack">
-                <span class="tech-tag">.NET Core</span>
-                <span class="tech-tag">Angular</span>
-                <span class="tech-tag">SQL Server</span>
+    <!-- Card 1 -->
+    <div class="project-card">
+        <div class="card-inner">
+            <div class="card-front">
+                <img src="transport.jpg" alt="Transportation App">
+                <h3>Transportation Management App</h3>
+                <div class="tech-stack">
+                    <span class="tech-tag">.NET Core</span>
+                    <span class="tech-tag">Angular</span>
+                    <span class="tech-tag">SQL Server</span>
+                </div>
             </div>
-            <p>
-                Internal web-based system for optimizing employee transport schedules, demonstrating robust full-stack development and real-time resource visibility.
-            </p>
-            <div class="project-links">
-                <a href="[GitHub Link 1]" target="_blank" class="code-button">View Code 💻</a>
-                <a href="#" target="_blank" class="demo-button" aria-disabled="true">Demo N/A</a>
+            <div class="card-back">
+                <p>Internal web-based system for optimizing employee transport schedules, demonstrating robust full-stack development and real-time resource visibility.</p>
+                <div class="project-links">
+                    <a href="[GitHub Link 1]" target="_blank" class="code-button">View Code 💻</a>
+                    <a href="#" target="_blank" class="demo-button" aria-disabled="true">Demo N/A</a>
+                </div>
             </div>
         </div>
+    </div>
 
-        <div class="project-card">
-            <h3>Real Estate Listing Platform</h3>
-            <div class="tech-stack">
-                <span class="tech-tag">ASP.NET Core</span>
-                <span class="tech-tag">JWT Auth</span>
-                <span class="tech-tag">React</span>
+    <!-- Card 2 -->
+    <div class="project-card">
+        <div class="card-inner">
+            <div class="card-front">
+                <img src="real.jpg" alt="Real Estate Platform">
+                <h3>Real Estate Listing Platform</h3>
+                <div class="tech-stack">
+                    <span class="tech-tag">ASP.NET Core</span>
+                    <span class="tech-tag">JWT Auth</span>
+                    <span class="tech-tag">React</span>
+                </div>
             </div>
-            <p>
-                Full-stack platform with secure RESTful APIs, enabling property browsing and user management, highlighting secure authentication and front-end proficiency.
-            </p>
-            <div class="project-links">
-                <a href="[GitHub Link 2]" target="_blank" class="code-button">View Code 💻</a>
-                <a href="#" target="_blank" class="demo-button">View Demo 🚀</a>
+            <div class="card-back">
+                <p>Full-stack platform with secure RESTful APIs, enabling property browsing and user management, highlighting secure authentication and front-end proficiency.</p>
+                <div class="project-links">
+                    <a href="[GitHub Link 2]" target="_blank" class="code-button">View Code 💻</a>
+                    <a href="#" target="_blank" class="demo-button">View Demo 🚀</a>
+                </div>
             </div>
         </div>
+    </div>
 
-        <div class="project-card">
-            <h3>eCommerce Users Microservice</h3>
-            <div class="tech-stack">
-                <span class="tech-tag">Microservices</span>
-                <span class="tech-tag">C#</span>
-                <span class="tech-tag">PostgreSQL</span>
+    <!-- Card 3 -->
+    <div class="project-card">
+        <div class="card-inner">
+            <div class="card-front">
+                <img src="ecomme.jpg" alt="eCommerce Microservice">
+                <h3>eCommerce Users Microservice</h3>
+                <div class="tech-stack">
+                    <span class="tech-tag">Microservices</span>
+                    <span class="tech-tag">C#</span>
+                    <span class="tech-tag">PostgreSQL</span>
+                </div>
             </div>
-            <p>
-                Developed the dedicated user management layer for a larger e-commerce platform, showcasing expertise in distributed systems and scalable API design.
-            </p>
-            <div class="project-links">
-                <a href="[GitHub Link 3]" target="_blank" class="code-button">View Code 💻</a>
-                <a href="#" target="_blank" class="demo-button" aria-disabled="true">Demo N/A</a>
+            <div class="card-back">
+                <p>Developed the dedicated user management layer for a larger e-commerce platform, showcasing expertise in distributed systems and scalable API design.</p>
+                <div class="project-links">
+                    <a href="[GitHub Link 3]" target="_blank" class="code-button">View Code 💻</a>
+                    <a href="#" target="_blank" class="demo-button" aria-disabled="true">Demo N/A</a>
+                </div>
             </div>
         </div>
+    </div>
 
-        <div class="project-card">
-            <h3>API Performance Optimization</h3>
-            <div class="tech-stack">
-                <span class="tech-tag">Caching</span>
-                <span class="tech-tag">Async</span>
-                <span class="tech-tag">Blazor</span>
+    <!-- Card 4 -->
+    <div class="project-card">
+        <div class="card-inner">
+            <div class="card-front">
+                <img src="api.jpg" alt="API Optimization">
+                <h3>API Performance Optimization</h3>
+                <div class="tech-stack">
+                    <span class="tech-tag">Caching</span>
+                    <span class="tech-tag">Async</span>
+                    <span class="tech-tag">Blazor</span>
+                </div>
             </div>
-            <p>
-                Focused on dramatic performance improvement using asynchronous processing and in-memory caching, with an interactive Blazor frontend for testing and metrics.
-            </p>
-            <div class="project-links">
-                <a href="[GitHub Link 4]" target="_blank" class="code-button">View Code 💻</a>
-                <a href="#" target="_blank" class="demo-button">View Demo 🚀</a>
+            <div class="card-back">
+                <p>Focused on dramatic performance improvement using asynchronous processing and in-memory caching, with an interactive Blazor frontend for testing and metrics.</p>
+                <div class="project-links">
+                    <a href="[GitHub Link 4]" target="_blank" class="code-button">View Code 💻</a>
+                    <a href="#" target="_blank" class="demo-button">View Demo 🚀</a>
+                </div>
             </div>
         </div>
+    </div>
 
-        <div class="project-card">
-            <h3>Data Analytics Dashboard</h3>
-            <div class="tech-stack">
-                <span class="tech-tag">Power BI</span>
-                <span class="tech-tag">DAX</span>
-                <span class="tech-tag">Data Analysis</span>
+    <!-- Card 5 -->
+    <div class="project-card">
+        <div class="card-inner">
+            <div class="card-front">
+                <img src="powerbi.jpg" alt="Data Analytics Dashboard">
+                <h3>Data Analytics Dashboard</h3>
+                <div class="tech-stack">
+                    <span class="tech-tag">Power BI</span>
+                    <span class="tech-tag">DAX</span>
+                    <span class="tech-tag">Data Analysis</span>
+                </div>
             </div>
-            <p>
-                Created a sophisticated Power BI dashboard using airline data, implementing advanced analytics with DAX for interactive, data-driven executive reporting.
-            </p>
-            <div class="project-links">
-                <a href="[GitHub Link 5]" target="_blank" class="code-button">View Code 💻</a>
-                <a href="#" target="_blank" class="demo-button" aria-disabled="true">Report Link</a>
+            <div class="card-back">
+                <p>Created a sophisticated Power BI dashboard using airline data, implementing advanced analytics with DAX for interactive, data-driven executive reporting.</p>
+                <div class="project-links">
+                    <a href="[GitHub Link 5]" target="_blank" class="code-button">View Code 💻</a>
+                    <a href="#" target="_blank" class="demo-button" aria-disabled="true">Report Link</a>
+                </div>
             </div>
         </div>
+    </div>
+
+</div>
+
         
     </div>
   </section>
 
   <!-- Education Section -->
   <section id="education" class="max-w-7xl mx-auto p-10">
-    <h2 class="section-title">My Growth Path</h2>
-    <p class="section-subtitle">
+    <h2 class="section-title" style="text-align: center;">My Growth Path</h2>
+    <p class="section-subtitle" style="text-align: center;">
         A journey through education and professional experience
     </p>
 
