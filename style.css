@@ -157,6 +157,25 @@ nav.scrolled {
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.nav-link.active {
+    color: #3730a3 !important; 
+    font-weight: 700 !important; 
+}
+
+.nav-link.active .active-line {
+    transform: scaleX(1) !important;
+}
+
+.mobile-nav-link.active {
+    color: #3730a3 !important;
+    font-weight: 700 !important;
+    background-color: #eef2ff; 
+    padding-left: 0.5rem;
+    border-radius: 4px;
+}
+
+
+
 a {
   transition: color 0.3s ease, background-color 0.3s ease;
 }
@@ -530,7 +549,11 @@ a:hover span {
 }
 
 .card-back p {
-    margin-bottom: 20px;
+    font-size: 1rem;            /* Standard body size for readability */
+  color: #374151;             /* Darker gray for better contrast */
+  line-height: 1.75;          /* More vertical spacing */
+  padding: 15px 20px;
+    
 }
 
 /* Buttons */
@@ -584,8 +607,14 @@ a:hover span {
 }
 
 .code-button {
-    background-color: var(--primary-accent);
-    color: white;
+    background-color: #2563eb;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  border: none;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
 }
 
 .code-button:hover {
@@ -761,4 +790,43 @@ a:hover span {
         opacity: 1;
         transform: translateX(0) !important;
     }
+}
+
+/* 1. Main Footer Container */
+.site-footer {
+    background-color: #f7f7f7;
+    padding: 30px 0; /* Increased vertical padding */
+    font-size: 1rem; /* Slightly larger font for better readability */
+    width: 100%;
+    margin-top: 50px; 
+    border-top: 1px solid #e5e7eb;    /* Ensure space between the content and the footer */
+}
+.copyright {
+    color: #4b5563; /* Darker gray for better contrast */
+    font-weight: 500;
+}
+
+/* 2. Content Alignment (Optional: adjust max-width to match your main page content) */
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;             /* Use Flexbox to align content */
+    justify-content: space-between; /* Pushes copyright to the left, links to the right */
+    align-items: center;
+}
+
+/* 3. Link Styling */
+.footer-link {
+    color: #0284c7; /* Use your primary blue accent color */
+    text-decoration: none;
+    margin-left: 25px; /* Increased spacing */
+    font-weight: 600; /* Make the links bold */
+    transition: color 0.3s;
+}
+
+/* 4. Hover Effect (Using your primary blue accent) */
+.footer-link:hover {
+    color: #1e40af; /* A slightly darker blue on hover */
+    text-decoration: underline; /* Add underline on hover for extra feedback */
 }

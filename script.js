@@ -128,50 +128,53 @@ tabs.forEach(tab => {
   });
 });
 
- const sections = document.querySelectorAll("section");
-  const navLinks = document.querySelectorAll("nav a");
+ document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll("nav a[href^='#']");
 
-  // Function to remove active class from all links
-  function removeActive() {
-    navLinks.forEach(link => link.classList.remove("text-indigo-600", "font-bold"));
-  }
-
-  // Function to add active class based on scroll
-  window.addEventListener("scroll", () => {
-    let currentSection = "";
+  function activateMenu() {
+    let scrollY = window.scrollY + 150; // adjust for navbar height
 
     sections.forEach(section => {
-      const sectionTop = section.offsetTop - 100; // adjust offset for navbar height
+      const sectionTop = section.offsetTop;
       const sectionHeight = section.offsetHeight;
+      const sectionId = section.getAttribute("id");
 
-      if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-        currentSection = section.getAttribute("id");
+      // Check if section is in view
+      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+        navLinks.forEach(link => {
+          link.classList.remove("text-indigo-600", "font-bold"); // remove active
+          if (link.getAttribute("href") === `#${sectionId}`) {
+            link.classList.add("text-indigo-600", "font-bold"); // active
+          }
+        });
       }
     });
+  }
 
-    removeActive();
+  window.addEventListener("scroll", activateMenu);
+  activateMenu(); // Run once on page load
 
-    navLinks.forEach(link => {
-      if (link.getAttribute("href").substring(1) === currentSection) {
-        link.classList.add("text-indigo-600", "font-bold"); // active styles
-      }
-    });
-  });
-
-  // Optional: Add click effect for smooth scrolling
+  // Optional smooth scrolling when clicking menu items
   navLinks.forEach(link => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
       const target = document.querySelector(link.getAttribute("href"));
-      const offset = 160; // height of navbar + some padding
-        const bodyRect = document.body.getBoundingClientRect().top;
-        const targetRect = target.getBoundingClientRect().top;
-        const targetPosition = targetRect - bodyRect - offset;
-        
-        window.scrollTo({
-        top: targetPosition,
-        behavior: "smooth"
-        });
+      const navbar = document.querySelector("nav");
+      const navbarHeight = navbar ? navbar.offsetHeight + 0 : 140; // +20 gives a small gap
+      const y = target.getBoundingClientRect().top + window.scrollY - navbarHeight;
 
+      window.scrollTo({ top: y, behavior: "smooth" });
+
+      // Close mobile menu after clicking
+      const mobileMenu = document.getElementById("mobile-menu");
+      if (mobileMenu && !mobileMenu.classList.contains("hidden")) {
+        mobileMenu.classList.add("hidden");
+      }
     });
   });
+});
+
+
+
+
